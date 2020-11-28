@@ -71,7 +71,7 @@
   					<div class="wrap-contact100-form-btn">
   						<div class="contact100-form-bgbtn"></div>
 						<form>
-         						<button id="btn" type="submit" onclick="myFunction()" class="contact100-form-btn">Generate code</button>
+         						<button id="btn" type="submit" onclick="myFunction();" class="contact100-form-btn">Generate code</button>
       						</form>
   					</div>
   				</div>
@@ -99,7 +99,7 @@
   </body>
 <script type="text/javascript">
     function myFunction() {
-		window.open('http://127.0.0.1:8080/get_result/'+document.getElementById("framework").value+'/'+document.getElementById("desc").value, '_blank');
+		window.open('http://127.0.0.1:8093/get_result/'+document.getElementById("framework").value+'/'+document.getElementById("desc").value, '_blank');
     }
 </script>
   </html>

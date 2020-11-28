@@ -19,19 +19,19 @@ def my_index():
 def get_result(platform, desc):
     s = ''
     if (platform == 'python'):
-        s = gpt_python.get_top_reply(desc)
-        return render_template('result.html')
+        s = gpt_python.get_top_reply(desc).partition(' ')[2]
+        return render_template('result.html', s=s)
     elif (platform == 'sql'):
         s = gpt_sql.get_top_reply(desc)
-        return render_template('result.html')
+        return render_template('result.html', s=s)
     elif (platform == 'js'):
         s = gpt_js.get_top_reply(desc)
-        return render_template('result.html')
+        return render_template('result.html', s=s)
     elif (platform == 'php'):
         s = gpt_php.get_top_reply(desc)
-        return render_template('result.html')
+        return render_template('result.html', s=s)
 
 if __name__ == '__main__':
     app.config['TEMPLATES_AUTO_RELOAD'] = True
     app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
-    app.run(port=8084)
+    app.run(port=8093)
