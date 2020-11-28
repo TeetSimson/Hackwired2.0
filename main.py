@@ -1,32 +1,37 @@
-import flask
+from flask import Flask, render_template
 from code_generator import *
+import os
 
-app = flask.Flask("__main__", static_url_path='')
+project_root = os.path.dirname(__file__)
+template_path = os.path.join(project_root, 'templates')
+
+app = Flask(__name__, template_folder=template_path, static_url_path='')
 
 @app.route("/")
 def my_index():
-    return app.send_static_file('index.html')
+    train_python_model()
+    train_sql_model()
+    train_js_model()
+    train_php_model()
+    return render_template('index.html')
 
-@app.route("/get_result/<platform>/<desc>")
+@app.route("/get_result/<platform>/<desc>/")
 def get_result(platform, desc):
     s = ''
     if (platform == 'python'):
-        train_python_model()
         s = gpt_python.get_top_reply(desc)
-        return s.split(' ', 1)[1]
+        return render_template('result.html')
     elif (platform == 'sql'):
-        train_sql_model()
         s = gpt_sql.get_top_reply(desc)
-        return s.split(' ', 1)[1]
+        return render_template('result.html')
     elif (platform == 'js'):
-        train_js_model()
         s = gpt_js.get_top_reply(desc)
-        return s.split(' ', 1)[1]
+        return render_template('result.html')
     elif (platform == 'php'):
-        train_php_model()
         s = gpt_php.get_top_reply(desc)
-        return s.split(' ', 1)[1]
+        return render_template('result.html')
 
-app.config['TEMPLATES_AUTO_RELOAD'] = True
-app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
-app.run(port=9092)
+if __name__ == '__main__':
+    app.config['TEMPLATES_AUTO_RELOAD'] = True
+    app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
+    app.run(port=8084)
