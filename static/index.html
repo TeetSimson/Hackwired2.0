@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>HackWired</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!--===============================================================================================-->
+    <link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
+
+  	<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+  	<link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
+  	<link rel="stylesheet" type="text/css" href="vendor/css-hamburgers/hamburgers.min.css">
+  	<link rel="stylesheet" type="text/css" href="vendor/animsition/css/animsition.min.css">
+  	<link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
+  	<link rel="stylesheet" type="text/css" href="css/util.css">
+  	<link rel="stylesheet" type="text/css" href="css/main.css">
+  <!--===============================================================================================-->
+  </head>
+
+  <body>
+
+
+  	<div class="container-contact100">
+  		<div class="wrap-contact100">
+  			<form class="contact100-form validate-form">
+  				<span class="contact100-form-title">
+  					Say Hello to the Hackwired!
+  				</span>
+
+  				<div class="wrap-input100 validate-input" data-validate="Name is required">
+  					<span class="label-input100">Project Name</span>
+  					<input class="input100" type="text" name="name" placeholder="Enter your name">
+  					<span class="focus-input100"></span>
+  				</div>
+
+  				<div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
+  					<span class="label-input100">Email</span>
+  					<input class="input100" type="text" name="email" placeholder="Enter your email addess">
+  					<span class="focus-input100"></span>
+  				</div>
+
+          <div class="custom-select" data-validate="Framework is required">
+  					<span class="label-input100">Language/Framework</span>
+  					<select class="dropdown" name="name" placeholder="Choose your framework">
+              <option value="Python">Python</option>
+              <option value="JavaScript">JavaScript</option>
+              <option value="PHP">PHP</option>
+              <option value="SQL">SQL</option>
+            </select>
+  					<span class="focus-input100"></span>
+  				</div>
+
+          <div class="custom-select" data-validate="Service is required">
+          <span class="label-input100">Service</span>
+            <select class="dropdown" name="name" placeholder="Choose your framework">
+              <option value="On Premise">On Premise</option>
+              <option value="Files">Files</option>
+              <option value="MondoDB">MondoDB</option>
+              <option value="SQL Server">SQL Server</option>
+              <option value="Firebase">Firebase</option>
+            </select>
+  				</div>
+
+  				<div id = "description" class="wrap-input100 validate-input" data-validate = "Description is required">
+  					<span class="label-input100">Description</span>
+  					<textarea class="input100" name="message" placeholder="Your description here..."></textarea>
+  					<span class="focus-input100"></span>
+  				</div>
+
+  				<div class="container-contact100-form-btn">
+  					<div class="wrap-contact100-form-btn">
+  						<div class="contact100-form-bgbtn"></div>
+						<form>
+         						<button type="submit" formaction="http://127.0.0.1:9092/get_result/python/Display%20Division%20of%20girl%20who%20scored%20maximum%20marks" class="contact100-form-btn">Generate code</button>
+      						</form>
+  					</div>
+  				</div>
+  			</form>
+  		</div>
+  	</div>
+
+
+
+  	<div id="dropDownSelect1"></div>
+
+
+  	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+  	<script src="vendor/animsition/js/animsition.min.js"></script>
+
+  	<script src="vendor/select2/select2.min.js"></script>
+  	<script>
+  		$(".selection-2").select2({
+  			minimumResultsForSearch: 20,
+  			dropdownParent: $('#dropDownSelect1')
+  		});
+  	</script>
+  	<script src="js/main.js"></script>
+
+  </body>
+  <script>
+  function submit(text) {
+  	const Http = new XMLHttpRequest();
+  	var s = concat('alexandrachirita98.pythonanywhere.com/extract_features?text={', text);
+  	const url=concat(s, '}')
+  	Http.open("GET", url);
+  	Http.send();
+
+  	Http.onreadystatechange = (e) => {
+    		console.log(Http.responseText)
+  	}
+  }
+  </script>
+
+  </html>

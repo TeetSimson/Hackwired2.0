@@ -2,11 +2,10 @@ import json
 import openai
 import numpy as np
 import pandas as pd
-import matplotlib.pyplot as plt
-import seaborn as sns
-from backend.gpt import set_openai_key
-from backend.gpt import GPT
-from backend.gpt import Example
+
+from gpt import set_openai_key
+from gpt import GPT
+from gpt import Example
 
 set_openai_key()
 

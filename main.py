@@ -1,11 +1,11 @@
 import flask
-from backend.code_generator import *
+from code_generator import *
 
-app = flask.Flask("__main__")
+app = flask.Flask("__main__", static_url_path='')
 
 @app.route("/")
 def my_index():
-    return flask.render_template("index.html")
+    return app.send_static_file('index.html')
 
 @app.route("/get_result/<platform>/<desc>")
 def get_result(platform, desc):
@@ -27,4 +27,6 @@ def get_result(platform, desc):
         s = gpt_php.get_top_reply(desc)
         return s.split(' ', 1)[1]
 
-app.run(debug=True)
+app.config['TEMPLATES_AUTO_RELOAD'] = True
+app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
+app.run(port=9092)
