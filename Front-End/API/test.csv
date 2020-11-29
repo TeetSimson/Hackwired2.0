@@ -1,0 +1,139 @@
+Framework,Web Service,Code,Parallelism,Scalability
+Flask,AWS,"import flask
+
+app = flask.Flask(""__main__"")
+@app.route(""/"")
+def my_index():
+    return flask.render_template(""index.html"", token=""Hello Flask+React"")
+
+app.run(debug=True)",0.6
+Laravel,Azure,"Route::post('/task', function (Request $request) {
+    $validator = Validator::make($request->all(), [
+        'name' => 'required|max:255',
+    ]);
+
+    if ($validator->fails()) {
+        return redirect('/')
+            ->withInput()
+            ->withErrors($validator);
+    }
+
+    // Create The Task...
+});",0.5
+SQL,AWS,"SELECT 
+    call.*,
+    DATEDIFF(""SECOND"", call.start_time, call.end_time) AS call_duration
+FROM call
+ORDER BY
+    call.employee_id ASC,
+    call.start_time ASC;",0.3
+Django,Oracle,"age = int(input(""What's your age?""))
+
+if age >= 18:
+    print(""Access allowed"")
+elif age < 18 and age > 0:
+    print(""Access not allowed"")
+else:
+    print(""Invalid age"")",0.8
+Nodejs,IBM,"var http = require('http');
+
+http.createServer(function (req, res) {
+  res.writeHead(200, {'Content-Type': 'text/plain'});
+  res.end('Hello World!');
+}).listen(8080);",0.9
+Flask,AWS,"from flask import Flask
+from flask_sqlalchemy import SQLAlchemy
+from flask_script import Manager
+from flask_migrate import Migrate, MigrateCommand
+from CTFd import create_app
+from CTFd.utils import get_config as get_config_util, set_config as set_config_util
+from CTFd.models import *
+
+app = create_app()
+
+manager = Manager(app)
+manager.add_command(""db"", MigrateCommand)
+
+
+def jsenums():
+    from CTFd.constants import JS_ENUMS
+    import json
+    import os
+
+    path = os.path.join(app.root_path, ""themes/core/assets/js/constants.js"")
+
+    with open(path, ""w+"") as f:
+        for k, v in JS_ENUMS.items():
+            f.write(""const {} = Object.freeze({});"".format(k, json.dumps(v)))",0.6
+Django,Azure,"from django.conf.urls import url
+from howdy import views
+
+
+urlpatterns = [
+    url(r'^$', views.HomePageView.as_view()),
+    url(r'^about/$', views.AboutPageView.as_view()), # Add this /about/ route
+]",0.5
+SQL,Google Cloud,"SELECT 
+    employee.id,
+    employee.first_name,
+    employee.last_name,
+    AVG(DATEDIFF(""SECOND"", call.start_time, call.end_time)) AS call_duration_avg
+FROM call
+INNER JOIN employee ON call.employee_id = employee.id
+GROUP BY
+    employee.id,
+    employee.first_name,
+    employee.last_name
+ORDER BY
+    employee.id ASC;
+ 
+-- average call duration - all calls
+SELECT
+    AVG(DATEDIFF(""SECOND"", call.start_time, call.end_time)) AS call_duration_avg
+FROM call;",0.3
+Django,Oracle,"from django.shortcuts import render
+from django.views.generic import TemplateView
+
+# Create your views here.
+class HomePageView(TemplateView):
+    def get(self, request, **kwargs):
+        return render(request, 'index.html', context=None)",0.8
+Nodejs,Google Cloud,"const http = require('http');
+
+const hostname = '127.0.0.1';
+const port = 3000;
+
+const server = http.createServer((req, res) => {
+  res.statusCode = 200;
+  res.setHeader('Content-Type', 'text/plain');
+  res.end('Hello, World!\n');
+});
+
+server.listen(port, hostname, () => {
+  console.log(`Server running at http://${hostname}:${port}/`);
+});",0.9
+Flask,AWS,"from flask import Flask
+app = Flask(__name__)
+
+
+@app.route('/')
+def hello_world():
+    return 'Hello, World!'
+
+if __name__ == '__main__':
+    app.run()",0.8
+Laravel,AWS,"
+@if (count($errors) > 0)
+    <!-- Form Error List -->
+    <div class=""alert alert-danger"">
+        <strong>Whoops! Something went wrong!</strong>
+
+        <br><br>
+
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif",,
